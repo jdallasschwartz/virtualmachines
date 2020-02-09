@@ -1,0 +1,18 @@
+# Useful Commands for Linux
+
+## ipgrep - find all ips currently being used by this machine
+alias ipgrep='egrep -o '\''[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'\'''
+
+## Get certificate info gtom TLS Endpoints
+openssl s_client -connect 1.1.1.1:443
+
+## Show listening ports associated with process
+sudo netstat -antp | grep LIST
+
+## Function to verify if an SSH server requires a password to login
+function sshpw {
+  ssh -v -oBatchMode=yes \
+  -oUserKnownHostsFile=/dev/null \
+  -oStrictHostKeyChecking=no user@"$1" 2>&1 | grep -q password && echo "password authentication is enabled :-)"
+}
+
